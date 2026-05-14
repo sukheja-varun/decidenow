@@ -222,27 +222,32 @@ export function DecisionTable({
                 Criterion
               </th>
               <th className={cn(thClass, 'text-center')}>
-                Importance (1–10)
+                <div>Weight</div>
+                <div className="text-xs font-normal text-gray-400 dark:text-gray-500 normal-case tracking-normal">how much it matters</div>
               </th>
               {/* Option A name — editable */}
-              <th className={cn(thClass, 'text-center min-w-[120px]')}>
+              <th className={cn(thClass, 'text-center min-w-[130px]')}>
                 <input
                   type="text"
                   value={optionAName}
                   onChange={(e) => onUpdateOptionName('A', e.target.value)}
-                  className="w-full min-w-[80px] rounded border-0 bg-transparent text-center text-sm font-medium text-gray-500 dark:text-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-400 dark:focus:ring-indigo-500"
+                  className="w-full min-w-[80px] rounded border-0 bg-transparent text-center text-sm font-semibold text-indigo-600 dark:text-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-400 dark:focus:ring-indigo-500"
                   aria-label="Option A name"
+                  placeholder="Option A"
                 />
+                <div className="text-xs font-normal text-gray-400 dark:text-gray-500 normal-case tracking-normal">score 1–10</div>
               </th>
               {/* Option B name — editable */}
-              <th className={cn(thClass, 'text-center min-w-[120px]')}>
+              <th className={cn(thClass, 'text-center min-w-[130px]')}>
                 <input
                   type="text"
                   value={optionBName}
                   onChange={(e) => onUpdateOptionName('B', e.target.value)}
-                  className="w-full min-w-[80px] rounded border-0 bg-transparent text-center text-sm font-medium text-gray-500 dark:text-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-400 dark:focus:ring-indigo-500"
+                  className="w-full min-w-[80px] rounded border-0 bg-transparent text-center text-sm font-semibold text-violet-600 dark:text-violet-400 focus:outline-none focus:ring-1 focus:ring-indigo-400 dark:focus:ring-indigo-500"
                   aria-label="Option B name"
+                  placeholder="Option B"
                 />
+                <div className="text-xs font-normal text-gray-400 dark:text-gray-500 normal-case tracking-normal">score 1–10</div>
               </th>
               {showBreakdown && (
                 <>

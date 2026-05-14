@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { getTemplate, listTemplates, getFeaturedTemplates, seedDecision } from '@/lib/templates'
 
 describe('listTemplates', () => {
-  it('returns exactly 10 templates', () => {
-    expect(listTemplates()).toHaveLength(10)
+  it('returns exactly 6 templates', () => {
+    expect(listTemplates()).toHaveLength(6)
   })
 
   it('each template has required fields', () => {
@@ -36,17 +36,23 @@ describe('getTemplate', () => {
 })
 
 describe('getFeaturedTemplates', () => {
-  it('returns exactly 5 templates', () => {
-    expect(getFeaturedTemplates()).toHaveLength(5)
+  it('returns exactly 6 templates', () => {
+    expect(getFeaturedTemplates()).toHaveLength(6)
   })
 })
 
 describe('seedDecision', () => {
   it('creates a decision with template criteria', () => {
-    const t = getTemplate('real-estate')!
+    const t = getTemplate('job-offer')!
     const d = seedDecision(t)
     expect(d.criteria).toHaveLength(t.defaultCriteria.length)
-    expect(d.templateSlug).toBe('real-estate')
+    expect(d.templateSlug).toBe('job-offer')
+  })
+
+  it('uses template name as decision title', () => {
+    const t = getTemplate('job-offer')!
+    const d = seedDecision(t)
+    expect(d.title).toBe('Job Offer Decision')
   })
 
   it('all scores start at 0', () => {
@@ -59,7 +65,7 @@ describe('seedDecision', () => {
   })
 
   it('importance weights are copied from template', () => {
-    const t = getTemplate('car')!
+    const t = getTemplate('vacation')!
     const d = seedDecision(t)
     for (let i = 0; i < t.defaultCriteria.length; i++) {
       expect(d.criteria[i].importance).toBe(t.defaultCriteria[i].importance)
@@ -79,7 +85,7 @@ describe('seedDecision', () => {
   })
 
   it('defaults option names', () => {
-    const t = getTemplate('laptop')!
+    const t = getTemplate('job-offer')!
     const d = seedDecision(t)
     expect(d.optionAName).toBe('Option A')
     expect(d.optionBName).toBe('Option B')

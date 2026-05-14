@@ -130,6 +130,16 @@ export default function DecisionPage({ params }: PageProps) {
           </button>
         </div>
 
+        {/* How to use hint — shown only on first visit */}
+        <div className="rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 px-4 py-3 text-sm text-amber-800 dark:text-amber-300 flex gap-3 items-start">
+          <span className="text-base shrink-0">💡</span>
+          <span>
+            <strong>How to use:</strong> Click the column headers to rename your options (e.g. "Google" vs "Startup").
+            Set a <strong>Weight</strong> (1–10) for how much each criterion matters to you, then score each option.
+            The winner is calculated automatically.
+          </span>
+        </div>
+
         {/* Breakdown toggle */}
         <div className="flex items-center justify-end">
           <BreakdownToggle

@@ -29,7 +29,7 @@ function NewDecisionRedirector() {
         const now = new Date().toISOString()
         decision = {
           id: nanoid(10),
-          title: 'Untitled Decision',
+          title: 'My Decision',
           optionAName: 'Option A',
           optionBName: 'Option B',
           templateSlug: null,
@@ -42,7 +42,7 @@ function NewDecisionRedirector() {
       const now = new Date().toISOString()
       decision = {
         id: nanoid(10),
-        title: 'Untitled Decision',
+        title: 'My Decision',
         optionAName: 'Option A',
         optionBName: 'Option B',
         templateSlug: null,
