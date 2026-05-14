@@ -11,6 +11,8 @@ import {
   Plane,
   GraduationCap,
   PlusCircle,
+  MapPin,
+  Globe,
   type LucideIcon,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -27,6 +29,8 @@ const ICON_MAP: Record<string, LucideIcon> = {
   Plane,
   GraduationCap,
   PlusCircle,
+  MapPin,
+  Globe,
 }
 
 interface TemplateGridProps {

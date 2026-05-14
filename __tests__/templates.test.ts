@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { getTemplate, listTemplates, getFeaturedTemplates, seedDecision } from '@/lib/templates'
 
 describe('listTemplates', () => {
-  it('returns exactly 6 templates', () => {
-    expect(listTemplates()).toHaveLength(6)
+  it('returns exactly 7 templates', () => {
+    expect(listTemplates()).toHaveLength(7)
   })
 
   it('each template has required fields', () => {
