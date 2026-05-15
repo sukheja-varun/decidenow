@@ -57,7 +57,7 @@ export function ScoreInput({
       onBlur={handleBlur}
       aria-label={ariaLabel}
       className={cn(
-        'w-14 rounded border text-center text-sm font-medium transition-colors',
+        'w-12 sm:w-14 rounded border text-center text-sm font-medium transition-colors',
         'focus:outline-none focus:ring-2 focus:ring-indigo-500',
         'dark:bg-gray-800 dark:text-gray-100',
         isEmpty

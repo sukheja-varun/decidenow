@@ -71,7 +71,7 @@ function SortableRow({
     zIndex: isDragging ? 10 : undefined,
   }
 
-  const tdBase = 'px-3 py-2 border-b border-gray-100 dark:border-gray-800'
+  const tdBase = 'px-2 sm:px-3 py-1.5 sm:py-2 border-b border-gray-100 dark:border-gray-800'
 
   return (
     <tr
@@ -86,7 +86,7 @@ function SortableRow({
       <td
         className={cn(
           tdBase,
-          'sticky left-0 z-10 bg-white dark:bg-gray-900 min-w-[160px] max-w-[220px]'
+          'sticky left-0 z-10 bg-white dark:bg-gray-900 min-w-[110px] sm:min-w-[160px] max-w-[160px] sm:max-w-[220px]'
         )}
       >
         <div className="flex items-center gap-1.5">
@@ -160,7 +160,7 @@ function SortableRow({
             aria-label={`Delete criterion: ${criterion.name}`}
             className={cn(
               'rounded p-1 text-gray-300 dark:text-gray-700',
-              'opacity-0 group-hover:opacity-100 group-focus-within:opacity-100',
+              'opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100',
               'hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30',
               'transition-all focus:opacity-100 focus:outline-none focus:ring-1 focus:ring-red-400'
             )}
@@ -210,7 +210,7 @@ export function DecisionTable({
   }
 
   const thClass =
-    'text-left px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 whitespace-nowrap'
+    'text-left px-2 sm:px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800'
 
   return (
     <DndContext
@@ -223,7 +223,7 @@ export function DecisionTable({
           <table className="min-w-full border-collapse">
             <thead>
               <tr>
-                <th className={cn(thClass, 'sticky left-0 z-10 bg-gray-50 dark:bg-gray-800 min-w-[160px]')}>
+                <th className={cn(thClass, 'sticky left-0 z-10 bg-gray-50 dark:bg-gray-800 min-w-[110px] sm:min-w-[160px]')}>
                   Criterion
                 </th>
                 <th className={cn(thClass, 'text-center')}>
@@ -231,24 +231,24 @@ export function DecisionTable({
                   <span className="block text-xs font-normal text-gray-400 dark:text-gray-500 normal-case tracking-normal">how much it matters</span>
                 </th>
                 {/* Option A name — editable */}
-                <th className={cn(thClass, 'text-center min-w-[130px]')}>
+                <th className={cn(thClass, 'text-center min-w-[80px] sm:min-w-[130px]')}>
                   <input
                     type="text"
                     value={optionAName}
                     onChange={(e) => onUpdateOptionName('A', e.target.value)}
-                    className="w-full min-w-[80px] rounded border-0 bg-transparent text-center text-sm font-semibold text-indigo-600 dark:text-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-400 dark:focus:ring-indigo-500"
+                    className="w-full min-w-[56px] sm:min-w-[80px] rounded border-0 bg-transparent text-center text-sm font-semibold text-indigo-600 dark:text-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-400 dark:focus:ring-indigo-500"
                     aria-label="Option A name"
                     placeholder="Option A"
                   />
                   <span className="block text-xs font-normal text-gray-400 dark:text-gray-500 normal-case tracking-normal">score 1–10</span>
                 </th>
                 {/* Option B name — editable */}
-                <th className={cn(thClass, 'text-center min-w-[130px]')}>
+                <th className={cn(thClass, 'text-center min-w-[80px] sm:min-w-[130px]')}>
                   <input
                     type="text"
                     value={optionBName}
                     onChange={(e) => onUpdateOptionName('B', e.target.value)}
-                    className="w-full min-w-[80px] rounded border-0 bg-transparent text-center text-sm font-semibold text-violet-600 dark:text-violet-400 focus:outline-none focus:ring-1 focus:ring-indigo-400 dark:focus:ring-indigo-500"
+                    className="w-full min-w-[56px] sm:min-w-[80px] rounded border-0 bg-transparent text-center text-sm font-semibold text-violet-600 dark:text-violet-400 focus:outline-none focus:ring-1 focus:ring-indigo-400 dark:focus:ring-indigo-500"
                     aria-label="Option B name"
                     placeholder="Option B"
                   />
@@ -265,7 +265,7 @@ export function DecisionTable({
                   </>
                 )}
                 {/* Actions column */}
-                <th className={cn(thClass, 'w-10')} aria-label="Actions" />
+                <th className={cn(thClass, 'w-8 sm:w-10')} aria-label="Actions" />
               </tr>
             </thead>
 
@@ -296,27 +296,27 @@ export function DecisionTable({
             {/* Totals footer */}
             <tfoot>
               <tr className="bg-gray-50 dark:bg-gray-800 font-semibold">
-                <td className="sticky left-0 z-10 bg-gray-50 dark:bg-gray-800 px-3 py-2 text-sm text-gray-700 dark:text-gray-300">
+                <td className="sticky left-0 z-10 bg-gray-50 dark:bg-gray-800 px-2 sm:px-3 py-2 text-sm text-gray-700 dark:text-gray-300">
                   Total
                 </td>
-                <td className="px-3 py-2" />
-                <td className="px-3 py-2 text-center text-sm tabular-nums text-indigo-600 dark:text-indigo-400">
+                <td className="px-2 sm:px-3 py-2" />
+                <td className="px-2 sm:px-3 py-2 text-center text-sm tabular-nums text-indigo-600 dark:text-indigo-400">
                   {totalA}
                 </td>
-                <td className="px-3 py-2 text-center text-sm tabular-nums text-violet-600 dark:text-violet-400">
+                <td className="px-2 sm:px-3 py-2 text-center text-sm tabular-nums text-violet-600 dark:text-violet-400">
                   {totalB}
                 </td>
                 {showBreakdown && (
                   <>
-                    <td className="px-3 py-2 text-center text-sm tabular-nums text-indigo-600 dark:text-indigo-400">
+                    <td className="px-2 sm:px-3 py-2 text-center text-sm tabular-nums text-indigo-600 dark:text-indigo-400">
                       {totalA}
                     </td>
-                    <td className="px-3 py-2 text-center text-sm tabular-nums text-violet-600 dark:text-violet-400">
+                    <td className="px-2 sm:px-3 py-2 text-center text-sm tabular-nums text-violet-600 dark:text-violet-400">
                       {totalB}
                     </td>
                   </>
                 )}
-                <td className="px-3 py-2" />
+                <td className="px-2 sm:px-3 py-2" />
               </tr>
             </tfoot>
           </table>
