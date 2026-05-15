@@ -18,6 +18,9 @@ export const metadata: Metadata = {
     default: 'DecideNow',
   },
   description: 'Stop overthinking. Start deciding.',
+  other: {
+    'color-scheme': 'light dark',
+  },
 }
 
 export default function RootLayout({
