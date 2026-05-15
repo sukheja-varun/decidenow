@@ -14,6 +14,7 @@ import {
   PlusCircle,
   MapPin,
   Globe,
+  Rocket,
   type LucideIcon,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -33,6 +34,7 @@ const ICON_MAP: Record<string, LucideIcon> = {
   PlusCircle,
   MapPin,
   Globe,
+  Rocket,
 }
 
 interface TemplateSearchProps {
