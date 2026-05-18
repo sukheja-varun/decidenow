@@ -53,7 +53,11 @@ function NewDecisionRedirector() {
     }
 
     saveDecision(decision)
-    router.replace(`/decide/${decision.id}`)
+    const useWizard =
+      decision.templateSlug !== null && decision.criteria.length > 0
+    router.replace(
+      `/decide/${decision.id}${useWizard ? '?wizard=1' : ''}`
+    )
   }, [router, searchParams])
 
   return (
