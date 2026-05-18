@@ -21,12 +21,12 @@ export function WinnerBanner({
       role="status"
       aria-live="polite"
       className={cn(
-        'sticky top-0 z-10 w-full px-4 py-3 text-center backdrop-blur-sm transition-all',
+        'sticky top-14 z-20 w-full px-4 py-3 text-center backdrop-blur-sm transition-all',
         winner === 'A' || winner === 'B'
-          ? 'bg-gradient-to-r from-green-500 to-yellow-400 dark:from-green-600 dark:to-yellow-500 text-white'
+          ? 'bg-gradient-to-r from-[#494bd6] to-[#571bc1] text-white shadow-md'
           : winner === 'tie'
-          ? 'bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-200 border-b border-amber-200 dark:border-amber-700'
-          : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700'
+          ? 'bg-[var(--md-surface-container)] text-[var(--md-on-surface-variant)] border-b border-[var(--md-outline-variant)]'
+          : 'bg-[var(--md-surface-container)] text-[var(--md-on-surface-variant)] border-b border-[var(--md-outline-variant)]'
       )}
     >
       {(winner === 'A' || winner === 'B') && winnerName && (

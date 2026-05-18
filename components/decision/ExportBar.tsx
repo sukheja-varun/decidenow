@@ -106,11 +106,11 @@ export function ExportBar({ decision, result, className }: ExportBarProps) {
         onClick={handleExportImage}
         disabled={exporting}
         className={cn(
-          'inline-flex items-center gap-2 rounded-lg border border-gray-300 dark:border-gray-600',
-          'bg-white dark:bg-gray-800 px-4 py-2 text-sm font-medium',
-          'text-gray-700 dark:text-gray-200',
-          'hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors',
-          'focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900',
+          'inline-flex items-center gap-2 rounded-xl border border-[var(--md-outline-variant)]',
+          'bg-[var(--md-surface-container)] px-4 py-2 text-sm font-medium',
+          'text-[var(--md-on-surface-variant)]',
+          'hover:bg-[var(--md-surface-container-high)] transition-colors',
+          'focus:outline-none focus:ring-2 focus:ring-[var(--md-primary)]',
           'disabled:cursor-not-allowed disabled:opacity-60'
         )}
       >
@@ -122,12 +122,12 @@ export function ExportBar({ decision, result, className }: ExportBarProps) {
         type="button"
         onClick={handleCopyText}
         className={cn(
-          'inline-flex items-center gap-2 rounded-lg border',
+          'inline-flex items-center gap-2 rounded-xl border',
           'px-4 py-2 text-sm font-medium transition-colors',
-          'focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900',
+          'focus:outline-none focus:ring-2 focus:ring-[var(--md-primary)]',
           copied
-            ? 'border-green-400 bg-green-50 dark:bg-green-900/20 dark:border-green-500 text-green-700 dark:text-green-300'
-            : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700'
+            ? 'border-[var(--md-neon-emerald)] bg-[var(--md-neon-emerald)]/10 text-[var(--md-neon-emerald)]'
+            : 'border-[var(--md-outline-variant)] bg-[var(--md-surface-container)] text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-high)]'
         )}
       >
         <Copy size={15} aria-hidden="true" />

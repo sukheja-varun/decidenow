@@ -57,12 +57,12 @@ export function ScoreInput({
       onBlur={handleBlur}
       aria-label={ariaLabel}
       className={cn(
-        'w-12 sm:w-14 rounded border text-center text-sm font-medium transition-colors',
-        'focus:outline-none focus:ring-2 focus:ring-indigo-500',
-        'dark:bg-gray-800 dark:text-gray-100',
+        'w-12 sm:w-14 rounded-lg border text-center text-sm font-medium transition-colors',
+        'bg-[var(--md-surface-container-high)] text-[var(--md-on-surface)]',
+        'focus:outline-none focus:ring-2 focus:ring-[var(--md-primary)]',
         isEmpty
-          ? 'border-amber-400 bg-amber-50 dark:bg-amber-900/20 dark:border-amber-500 placeholder-amber-400'
-          : 'border-gray-300 bg-white dark:border-gray-600',
+          ? 'border-amber-400 placeholder-amber-400'
+          : 'border-[var(--md-outline-variant)]',
         'py-1 px-1',
         className
       )}

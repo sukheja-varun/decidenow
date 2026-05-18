@@ -20,10 +20,10 @@ export function BreakdownToggle({
       onClick={onToggle}
       aria-expanded={showBreakdown}
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors',
-        'text-indigo-600 dark:text-indigo-400',
-        'hover:bg-indigo-50 dark:hover:bg-indigo-900/30',
-        'focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900',
+        'inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-sm font-medium transition-colors',
+        'text-[var(--md-primary)]',
+        'hover:bg-[var(--md-primary-container)]/30',
+        'focus:outline-none focus:ring-2 focus:ring-[var(--md-primary)]',
         className
       )}
     >

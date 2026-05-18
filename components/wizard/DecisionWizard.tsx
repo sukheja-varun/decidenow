@@ -17,38 +17,36 @@ function ScoreRow({
   label: string
   value: number
   onChange: (v: number) => void
-  color: 'indigo' | 'violet'
+  color: 'primary' | 'secondary'
 }) {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center justify-between">
         <span
-          className={cn(
-            'text-sm font-semibold',
-            color === 'indigo'
-              ? 'text-indigo-600 dark:text-indigo-400'
-              : 'text-violet-600 dark:text-violet-400'
-          )}
+          className="text-sm font-semibold"
+          style={{ color: color === 'primary' ? 'var(--md-primary)' : 'var(--md-secondary)' }}
         >
           {label}
         </span>
-        <span className="text-xs text-gray-400 dark:text-gray-500">
+        <span className="text-xs text-[var(--md-on-surface-variant)] opacity-70">
           {value > 0 ? `${value} / 10` : 'tap to score'}
         </span>
       </div>
-      <div className="flex gap-1">
+      <div className="grid grid-cols-5 sm:grid-cols-10 gap-1">
         {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
           <button
             key={n}
             type="button"
             onClick={() => onChange(n)}
+            style={value === n ? {
+              background: color === 'primary' ? 'var(--md-primary)' : 'var(--md-secondary)',
+              color: color === 'primary' ? 'var(--md-on-primary)' : 'var(--md-on-primary)',
+            } : undefined}
             className={cn(
-              'flex-1 py-2.5 rounded-lg text-xs font-bold transition-all focus:outline-none focus:ring-2 focus:ring-offset-1 dark:ring-offset-gray-900',
+              'min-h-[48px] rounded-xl text-sm font-bold transition-all focus:outline-none focus:ring-2',
               value === n
-                ? color === 'indigo'
-                  ? 'bg-indigo-600 text-white ring-indigo-500 scale-110 shadow-md'
-                  : 'bg-violet-600 text-white ring-violet-500 scale-110 shadow-md'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 ring-gray-300'
+                ? 'scale-105 shadow-md ring-2'
+                : 'bg-[var(--md-surface-container-high)] text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-highest)]'
             )}
             aria-label={`Score ${n} out of 10`}
             aria-pressed={value === n}
@@ -67,14 +65,14 @@ function WizardProgress({ current, total }: { current: number; total: number }) 
   const pct = Math.round((current / total) * 100)
   return (
     <div className="flex flex-col gap-1.5">
-      <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
+      <div className="flex justify-between text-xs text-[var(--md-on-surface-variant)]">
         <span>Criterion {current} of {total}</span>
         <span>{pct}%</span>
       </div>
-      <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
+      <div className="h-2 w-full overflow-hidden rounded-full bg-[var(--md-surface-container-highest)]">
         <div
-          className="h-full rounded-full bg-indigo-600 dark:bg-indigo-500 transition-all duration-500"
-          style={{ width: `${pct}%` }}
+          className="h-full rounded-full transition-all duration-500"
+          style={{ width: `${pct}%`, background: 'var(--md-primary)' }}
         />
       </div>
     </div>
@@ -88,10 +86,10 @@ function ImportanceBadge({ importance }: { importance: number }) {
     importance >= 8 ? 'High importance' : importance >= 5 ? 'Medium' : 'Lower weight'
   const cls =
     importance >= 8
-      ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-400'
+      ? 'bg-[var(--md-primary-container)] text-[var(--md-on-primary-container)]'
       : importance >= 5
-      ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-400'
-      : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400'
+      ? 'bg-amber-500/15 text-amber-600 dark:text-amber-400'
+      : 'bg-[var(--md-surface-container-highest)] text-[var(--md-on-surface-variant)]'
   return (
     <span
       className={cn(
@@ -126,20 +124,20 @@ function NameStep({
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <p className="text-xs font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-1">
+        <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: 'var(--md-primary)' }}>
           {decisionTitle}
         </p>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+        <h2 className="text-2xl font-bold text-[var(--md-on-surface)]">
           What are you comparing?
         </h2>
-        <p className="mt-1.5 text-sm text-gray-500 dark:text-gray-400">
-          Give each option a name — you'll see them throughout your comparison and in your saved history.
+        <p className="mt-1.5 text-sm text-[var(--md-on-surface-variant)]">
+          Give each option a name — you&apos;ll see them throughout your comparison and in your saved history.
         </p>
       </div>
 
       <div className="flex flex-col gap-4">
         <label className="flex flex-col gap-1.5">
-          <span className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">
+          <span className="text-sm font-semibold" style={{ color: 'var(--md-primary)' }}>
             Option 1
           </span>
           <input
@@ -148,18 +146,18 @@ function NameStep({
             onChange={(e) => setNameA(e.target.value)}
             placeholder="e.g. Google, Apartment A, Bali…"
             autoFocus
-            className="rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3 text-base text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container-high)] px-4 py-3 text-base text-[var(--md-on-surface)] placeholder-[var(--md-outline)] focus:outline-none focus:ring-2 focus:ring-[var(--md-primary)] transition"
           />
         </label>
 
         <div className="flex items-center gap-3 px-2">
-          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
-          <span className="text-sm font-bold text-gray-400 dark:text-gray-500">vs</span>
-          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+          <div className="h-px flex-1 bg-[var(--md-outline-variant)]" />
+          <span className="text-sm font-bold text-[var(--md-on-surface-variant)]">vs</span>
+          <div className="h-px flex-1 bg-[var(--md-outline-variant)]" />
         </div>
 
         <label className="flex flex-col gap-1.5">
-          <span className="text-sm font-semibold text-violet-600 dark:text-violet-400">
+          <span className="text-sm font-semibold" style={{ color: 'var(--md-secondary)' }}>
             Option 2
           </span>
           <input
@@ -171,7 +169,7 @@ function NameStep({
               if (e.key === 'Enter' && canContinue)
                 onConfirm(nameA.trim(), nameB.trim())
             }}
-            className="rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3 text-base text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 transition"
+            className="rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container-high)] px-4 py-3 text-base text-[var(--md-on-surface)] placeholder-[var(--md-outline)] focus:outline-none focus:ring-2 focus:ring-[var(--md-secondary)] transition"
           />
         </label>
       </div>
@@ -182,11 +180,12 @@ function NameStep({
           onClick={() => onConfirm(nameA.trim(), nameB.trim())}
           disabled={!canContinue}
           className={cn(
-            'flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold transition-all',
+            'flex items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-base font-semibold transition-all',
             canContinue
-              ? 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-md hover:shadow-lg'
-              : 'cursor-not-allowed bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500'
+              ? 'shadow-md hover:shadow-lg'
+              : 'cursor-not-allowed bg-[var(--md-surface-container-highest)] text-[var(--md-on-surface-variant)]'
           )}
+          style={canContinue ? { background: 'var(--md-primary)', color: 'var(--md-on-primary)' } : undefined}
         >
           Let&apos;s go
           <ArrowRight size={18} aria-hidden="true" />
@@ -195,7 +194,7 @@ function NameStep({
         <button
           type="button"
           onClick={onSkip}
-          className="text-center text-sm text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition underline-offset-2 hover:underline"
+          className="text-center text-sm text-[var(--md-on-surface-variant)] hover:text-[var(--md-on-surface)] transition underline-offset-2 hover:underline"
         >
           Skip — go straight to table
         </button>
@@ -233,10 +232,10 @@ function ScoringStep({
       <WizardProgress current={index + 1} total={total} />
 
       <div>
-        <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">
+        <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-[var(--md-on-surface-variant)] opacity-60">
           Criterion {index + 1} of {total}
         </p>
-        <h2 className="text-xl font-bold leading-snug text-gray-900 dark:text-gray-100">
+        <h2 className="text-xl font-bold leading-snug text-[var(--md-on-surface)]">
           {criterion.name}
         </h2>
         <div className="mt-2">
@@ -245,7 +244,7 @@ function ScoringStep({
       </div>
 
       <div>
-        <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+        <p className="mb-4 text-sm text-[var(--md-on-surface-variant)]">
           Score each option from <strong>1</strong> (poor) to <strong>10</strong> (excellent):
         </p>
         <div className="flex flex-col gap-5">
@@ -253,19 +252,19 @@ function ScoringStep({
             label={optionAName}
             value={criterion.scoreA}
             onChange={(v) => onUpdateCriterion(criterion.id, { scoreA: v })}
-            color="indigo"
+            color="primary"
           />
           <ScoreRow
             label={optionBName}
             value={criterion.scoreB}
             onChange={(v) => onUpdateCriterion(criterion.id, { scoreB: v })}
-            color="violet"
+            color="secondary"
           />
         </div>
       </div>
 
       {(criterion.scoreA > 0 || criterion.scoreB > 0) && !canNext && (
-        <p className="text-xs text-amber-600 dark:text-amber-400">
+        <p className="text-xs text-amber-500">
           ⚠ Score both options to continue
         </p>
       )}
@@ -274,7 +273,7 @@ function ScoringStep({
         <button
           type="button"
           onClick={onBack}
-          className="flex items-center gap-1.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2.5 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="flex items-center gap-1.5 rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container-high)] px-4 py-2.5 text-sm font-medium text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-highest)] transition focus:outline-none focus:ring-2 focus:ring-[var(--md-primary)]"
         >
           <ArrowLeft size={15} aria-hidden="true" />
           Back
@@ -284,11 +283,12 @@ function ScoringStep({
           onClick={onNext}
           disabled={!canNext}
           className={cn(
-            'flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500',
+            'flex items-center gap-2 rounded-2xl px-5 py-2.5 text-sm font-semibold transition-all focus:outline-none focus:ring-2',
             canNext
-              ? 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm'
-              : 'cursor-not-allowed bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500'
+              ? 'shadow-sm'
+              : 'cursor-not-allowed bg-[var(--md-surface-container-highest)] text-[var(--md-on-surface-variant)]'
           )}
+          style={canNext ? { background: 'var(--md-primary)', color: 'var(--md-on-primary)' } : undefined}
         >
           {isLast ? 'See results' : 'Next'}
           <ArrowRight size={15} aria-hidden="true" />
@@ -326,10 +326,10 @@ function CompleteStep({
         <>
           <div className="text-5xl">🤝</div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <h2 className="text-2xl font-bold text-[var(--md-on-surface)]">
               It&apos;s a tie!
             </h2>
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            <p className="mt-1 text-sm text-[var(--md-on-surface-variant)]">
               {decision.optionAName} and {decision.optionBName} scored exactly the same.
             </p>
           </div>
@@ -338,26 +338,26 @@ function CompleteStep({
         <>
           <div className="text-5xl">🏆</div>
           <div>
-            <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+            <p className="text-sm font-medium text-[var(--md-on-surface-variant)]">
               The numbers say…
             </p>
-            <h2 className="mt-0.5 text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">
+            <h2 className="mt-0.5 text-3xl font-extrabold" style={{ color: 'var(--md-primary)' }}>
               {winnerName}
             </h2>
           </div>
           <div className="flex items-center gap-8">
             <div className="flex flex-col items-center gap-0.5">
-              <span className="text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">
+              <span className="text-3xl font-extrabold" style={{ color: 'var(--md-primary)' }}>
                 {winnerScore}
               </span>
-              <span className="text-xs text-gray-500 dark:text-gray-400">{winnerName}</span>
+              <span className="text-xs text-[var(--md-on-surface-variant)]">{winnerName}</span>
             </div>
-            <span className="text-base font-bold text-gray-300 dark:text-gray-600">vs</span>
+            <span className="text-base font-bold text-[var(--md-outline-variant)]">vs</span>
             <div className="flex flex-col items-center gap-0.5">
-              <span className="text-3xl font-extrabold text-gray-400 dark:text-gray-500">
+              <span className="text-3xl font-extrabold text-[var(--md-on-surface-variant)]">
                 {loserScore}
               </span>
-              <span className="text-xs text-gray-500 dark:text-gray-400">{loserName}</span>
+              <span className="text-xs text-[var(--md-on-surface-variant)]">{loserName}</span>
             </div>
           </div>
         </>
@@ -366,7 +366,8 @@ function CompleteStep({
       <button
         type="button"
         onClick={onViewTable}
-        className="mt-2 flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-indigo-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        className="mt-2 flex items-center gap-2 rounded-2xl px-6 py-3 text-sm font-semibold shadow-md transition hover:shadow-lg focus:outline-none focus:ring-2"
+        style={{ background: 'var(--md-primary)', color: 'var(--md-on-primary)' }}
       >
         See full breakdown
         <ChevronRight size={16} aria-hidden="true" />
@@ -400,7 +401,7 @@ export function DecisionWizard({
 
   const card = (
     <div className="mx-auto w-full max-w-lg px-4 py-8 sm:px-6">
-      <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow-sm">
+      <div className="rounded-2xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container)] p-6 shadow-sm">
         {state.step === 'naming' && (
           <NameStep
             decisionTitle={decision.title}

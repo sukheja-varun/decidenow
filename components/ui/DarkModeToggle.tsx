@@ -38,10 +38,10 @@ export function DarkModeToggle({ className }: DarkModeToggleProps) {
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       className={cn(
-        'inline-flex h-9 w-9 items-center justify-center rounded-lg text-gray-600 transition-colors',
-        'hover:bg-gray-100 hover:text-gray-900',
-        'dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100',
-        'focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900',
+        'inline-flex h-9 w-9 items-center justify-center rounded-xl transition-colors',
+        'text-[var(--md-on-surface-variant)]',
+        'hover:bg-[var(--md-surface-container-high)] hover:text-[var(--md-on-surface)]',
+        'focus:outline-none focus:ring-2 focus:ring-[var(--md-primary)]',
         className
       )}
     >

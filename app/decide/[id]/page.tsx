@@ -105,7 +105,7 @@ function DecisionPageContent({ id }: { id: string }) {
               onBlur={handleTitleBlur}
               onKeyDown={handleTitleKeyDown}
               autoFocus
-              className="flex-1 rounded-lg border border-indigo-400 bg-white dark:bg-gray-800 px-3 py-1.5 text-2xl font-bold text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="flex-1 rounded-xl border border-[var(--md-primary)] bg-[var(--md-surface-container)] px-3 py-1.5 text-2xl font-bold text-[var(--md-on-surface)] focus:outline-none focus:ring-2 focus:ring-[var(--md-primary)]"
               aria-label="Decision title"
             />
           ) : (
@@ -119,7 +119,7 @@ function DecisionPageContent({ id }: { id: string }) {
                   setIsEditingTitle(true)
                 }
               }}
-              className="flex-1 cursor-text text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors hover:text-indigo-600 dark:hover:text-indigo-400 focus:outline-none focus:underline"
+              className="flex-1 cursor-text text-2xl font-bold text-[var(--md-on-surface)] transition-colors hover:text-[var(--md-primary)] focus:outline-none focus:underline"
               title="Click to edit title"
             >
               {decision.title}
@@ -130,7 +130,7 @@ function DecisionPageContent({ id }: { id: string }) {
             <button
               type="button"
               onClick={handleResetToTemplate}
-              className="shrink-0 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+              className="shrink-0 rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container)] px-3 py-1.5 text-sm font-medium text-[var(--md-on-surface-variant)] transition-colors hover:bg-[var(--md-surface-container-high)] focus:outline-none focus:ring-2 focus:ring-[var(--md-primary)]"
             >
               Reset
             </button>
@@ -139,7 +139,7 @@ function DecisionPageContent({ id }: { id: string }) {
           <button
             type="button"
             onClick={() => router.push('/')}
-            className="shrink-0 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+            className="shrink-0 rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container)] px-3 py-1.5 text-sm font-medium text-[var(--md-on-surface-variant)] transition-colors hover:bg-[var(--md-surface-container-high)] focus:outline-none focus:ring-2 focus:ring-[var(--md-primary)]"
           >
             ← Back
           </button>
@@ -147,7 +147,7 @@ function DecisionPageContent({ id }: { id: string }) {
 
         {/* Hint — only shown when options haven't been named yet */}
         {!optionsNamed && (
-          <div className="flex items-start gap-3 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 px-4 py-3 text-sm text-amber-800 dark:text-amber-300">
+          <div className="flex items-start gap-3 rounded-xl border border-amber-400/40 bg-amber-500/10 px-4 py-3 text-sm text-amber-700 dark:text-amber-300">
             <span className="shrink-0 text-base">💡</span>
             <span>
               <strong>How to use:</strong> Click the column headers to rename your options (e.g.

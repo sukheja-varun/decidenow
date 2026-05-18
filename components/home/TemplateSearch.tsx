@@ -66,7 +66,7 @@ export function TemplateSearch({ templates, onSelect, className }: TemplateSearc
       />
 
       {filtered.length === 0 ? (
-        <p className="py-8 text-center text-sm text-gray-500 dark:text-gray-400">
+        <p className="py-8 text-center text-sm text-[var(--md-on-surface-variant)]">
           No templates found for &lsquo;{query}&rsquo;
         </p>
       ) : (
@@ -79,26 +79,26 @@ export function TemplateSearch({ templates, onSelect, className }: TemplateSearc
                   type="button"
                   onClick={() => onSelect(template.slug)}
                   className={cn(
-                    'flex w-full items-start gap-3 rounded-xl border border-gray-200 dark:border-gray-700',
-                    'bg-white dark:bg-gray-800 p-3 text-left transition-colors',
-                    'hover:border-indigo-300 hover:bg-indigo-50 dark:hover:border-indigo-600 dark:hover:bg-indigo-900/20',
-                    'focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900'
+                    'flex w-full items-start gap-3 rounded-xl border border-[var(--md-outline-variant)]',
+                    'bg-[var(--md-surface-container)] p-3 text-left transition-colors',
+                    'hover:border-[var(--md-primary)]/50 hover:bg-[var(--md-surface-container-high)]',
+                    'focus:outline-none focus:ring-2 focus:ring-[var(--md-primary)]'
                   )}
                 >
-                  <span className="mt-0.5 flex-shrink-0 text-indigo-600 dark:text-indigo-400">
+                  <span className="mt-0.5 flex-shrink-0 text-[var(--md-primary)]">
                     {Icon ? (
                       <Icon size={18} aria-hidden="true" />
                     ) : (
-                      <span className="rounded bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 text-xs font-mono text-gray-500 dark:text-gray-400">
+                      <span className="rounded bg-[var(--md-surface-container-highest)] px-1.5 py-0.5 text-xs font-mono text-[var(--md-on-surface-variant)]">
                         {template.icon}
                       </span>
                     )}
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block text-sm font-semibold text-gray-900 dark:text-gray-100">
+                    <span className="block text-sm font-semibold text-[var(--md-on-surface)]">
                       {template.name}
                     </span>
-                    <span className="block text-xs text-gray-500 dark:text-gray-400 line-clamp-2">
+                    <span className="block text-xs text-[var(--md-on-surface-variant)] line-clamp-2">
                       {template.description}
                     </span>
                   </span>
